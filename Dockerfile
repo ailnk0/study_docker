@@ -1,5 +1,5 @@
 # 기본 이미지 지정
-FROM node as builder
+FROM node:18-alpine as builder
 
 # 사용자 지정 작업경로 지정
 WORKDIR /app
