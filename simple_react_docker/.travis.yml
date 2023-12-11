@@ -1,0 +1,17 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - echo "start creating an image with dockerfile"
+  - docker build -t benedictl/docker-react -f Dockerfile.dev .
+
+script:
+  - echo "start running lint"
+  - docker run -e CI=true benedictl/docker-react npm run lint
+
+after_success:
+  - echo "Test success"
