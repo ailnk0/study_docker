@@ -19,5 +19,8 @@ RUN npm run build
 # nginx 이미지 지정
 FROM nginx
 
+# nginx port 매핑
+EXPOSE 80
+
 # nginx 설정파일을 컨테이너에 복사
 COPY --from=builder /app/dist /usr/share/nginx/html
