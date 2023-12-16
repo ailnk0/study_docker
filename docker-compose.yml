@@ -8,7 +8,7 @@ services:
       - "5173:5173"
     volumes:
       - /app/node_modules
-      - ./react_app:/app
+      - .:/app
     stdin_open: true
   test:
     build:
@@ -16,5 +16,5 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
-      - ./react_app:/app
+      - .:/app
     command: ["npm", "run", "lint"]
