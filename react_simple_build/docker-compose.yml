@@ -1,0 +1,9 @@
+version: '1'
+
+services:
+  react-app:
+    image: node:22.8
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: bash -c "npm install && npm run build && ls dist"
