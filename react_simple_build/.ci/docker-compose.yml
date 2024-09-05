@@ -1,0 +1,19 @@
+services:
+  build-front:
+    image: node:22.8
+    volumes:
+      - ../:/workspace
+      - /workspace/node_modules
+    working_dir: /workspace
+    command: bash -c "cd .ci && chmod +x build.sh && ./build.sh"
+
+  build-nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: front:0.1
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - build-front
